@@ -16,6 +16,9 @@ export class LoginComponent {
   login(form: NgForm) {
     this.users = this.userService.getUsers();
     console.log(this.users);
+    if(this.users.length === 0) {
+      console.log("no registered users");
+    }
     for(let user of this.users) {
       if(user.username === form.value.username) {
         user.password === form.value.password ? console.log("login succesful") : console.log("invalid password");
