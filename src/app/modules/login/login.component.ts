@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { UserService } from '../../services/user.service';
@@ -8,22 +8,30 @@ import { User } from '../../models/user';
   selector: 'app-login',
   templateUrl: './login.component.html'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   users: User[];
 
+  ngOnInit() {
+    this.getUsers();
+  }
+
+  getUsers(): void {
+    this.userService.getUsers()
+      .subscribe(users => this.users = users);
+  }
+
   login(form: NgForm) {
-    this.users = this.userService.getUsers();
-    console.log(this.users);
-    if(this.users.length === 0) {
-      console.log("no registered users");
-    }
     for(let user of this.users) {
       if(user.username === form.value.username) {
-        user.password === form.value.password ? console.log("login succesful") : console.log("invalid password");
-        break;
-      }else console.log("user does not exist");
+        user.password === form.value.password ? this.setCurrentUser(user) : console.log("invalid password");
+      }
     }
+  }
+
+  setCurrentUser(user: User) {
+    this.userService.setCurrentUser(user);
+    console.log("Login successful. User currently logged in: " + this.userService.getCurrentUser().username);
   }
 }
