@@ -3,11 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
+import { UserComponent } from './modules/user/user.component';
+import { UserAccountComponent } from './modules/user/user-account.component';
+import { AdminComponent } from './modules/admin/admin.component';
+import { TrainTicketComponent } from './modules/user/train-ticket.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
-  { path: 'login', component: LoginComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'user',
+    component: UserComponent,
+    children: [
+      //{ path: '', redirectTo: 'account', pathMatch: 'full' },
+      { path: 'tickets', component: TrainTicketComponent },
+      { path: 'account', component: UserAccountComponent },
+      { path: 'admin', component: AdminComponent }
+    ]}
 ];
 
 @NgModule({

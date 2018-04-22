@@ -1,0 +1,11 @@
+<nav>
+  <a
+    *ngIf="!(currentUser === undefined || currentUser.admin)"
+    routerLink="tickets">Tickets</a>
+  <a
+    *ngIf="!(currentUser === undefined) && currentUser.admin"
+    routerLink="admin">Admin</a>
+  <a routerLink="account">Account</a>
+  <a routerLink="/login" (click)="logout()">Logout</a>
+</nav>
+<router-outlet></router-outlet>
