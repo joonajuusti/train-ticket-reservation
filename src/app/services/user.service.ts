@@ -37,6 +37,10 @@ export class UserService {
     this.currentUser = user;
   }
 
+  logoutCurrentUser() {
+    this.currentUser = null;
+  }
+
   getCurrentUser() {
     return this.currentUser;
   }
