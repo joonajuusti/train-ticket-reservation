@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
@@ -9,7 +10,7 @@ import { User } from '../../models/user';
   templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   users: User[];
 
@@ -32,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   setCurrentUser(user: User) {
     this.userService.setCurrentUser(user);
+    this.router.navigateByUrl('/user');
     console.log("Login successful. User currently logged in: " + this.userService.getCurrentUser().username);
   }
 }
