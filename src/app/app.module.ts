@@ -11,6 +11,11 @@ import { UserComponent } from './modules/user/user.component';
 import { UserAccountComponent } from './modules/user/user-account.component';
 import { TrainTicketComponent } from './modules/user/train-ticket.component';
 import { AdminComponent } from './modules/admin/admin.component';
+import { UserInformationComponent } from './modules/user/user-information.component';
+import { UserPasswordComponent } from './modules/user/user-password.component';
+
+import { AlertService } from './services/alert.service';
+import { AlertComponent } from './modules/alert/alert.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -29,9 +34,15 @@ import { AppRoutingModule } from './app-routing.module';
     UserComponent,
     UserAccountComponent,
     AdminComponent,
-    TrainTicketComponent
+    TrainTicketComponent,
+    UserInformationComponent,
+    UserPasswordComponent,
+    AlertComponent
   ],
-  providers: [ UserService ],
+  providers: [
+    UserService,
+    AlertService
+   ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
