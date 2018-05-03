@@ -7,7 +7,8 @@ import { UserComponent } from './modules/user/user.component';
 import { UserAccountComponent } from './modules/user/user-account.component';
 import { AdminComponent } from './modules/admin/admin.component';
 import { TrainTicketComponent } from './modules/user/train-ticket.component';
-
+import { UserInformationComponent } from './modules/user/user-information.component';
+import { UserPasswordComponent } from './modules/user/user-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -18,7 +19,13 @@ const routes: Routes = [
     children: [
       //{ path: '', redirectTo: 'account', pathMatch: 'full' },
       { path: 'tickets', component: TrainTicketComponent },
-      { path: 'account', component: UserAccountComponent },
+      { path: 'account',
+        component: UserAccountComponent,
+        children: [
+          { path: 'information', component: UserInformationComponent },
+          { path: 'password', component: UserPasswordComponent }
+        ]
+      },
       { path: 'admin', component: AdminComponent }
     ]}
 ];
