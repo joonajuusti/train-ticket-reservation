@@ -9,6 +9,7 @@ import { AdminComponent } from './modules/admin/admin.component';
 import { TrainTicketComponent } from './modules/user/train-ticket.component';
 import { UserInformationComponent } from './modules/user/user-information.component';
 import { UserPasswordComponent } from './modules/user/user-password.component';
+import { RouteComponent } from './modules/admin/route.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -26,7 +27,11 @@ const routes: Routes = [
           { path: 'password', component: UserPasswordComponent }
         ]
       },
-      { path: 'admin', component: AdminComponent }
+      { path: 'admin',
+        component: AdminComponent,
+        children: [
+          { path: 'routes', component: RouteComponent }
+        ]}
     ]}
 ];
 

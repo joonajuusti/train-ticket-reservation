@@ -11,7 +11,8 @@ import { AlertService } from '../../services/alert.service';
 export class UserPasswordComponent {
   constructor(
     private userService: UserService,
-    private alertService: AlertService) {}
+    private alertService: AlertService
+  ) {}
 
   currentUser: User;
 
@@ -21,21 +22,17 @@ export class UserPasswordComponent {
 
   changePassword(form: NgForm){
     if(this.currentUser.password === form.value.oldPassword && form.value.newPassword === form.value.newPasswordConfirm){
-      console.log('Old password: ' + this.currentUser.password +
-                  'New password: ' + form.value.newPassword);
       this.currentUser.password = form.value.newPassword;
-      this.userService.updateUser(this.currentUser)
-        .subscribe(() => {
-          form.reset();
-          this.alertService.success('Password changed', false);
-        }
-      );
-    }else if(this.currentUser.password === form.value.oldPassword) {
-      form.reset();
-      this.alertService.error('Incorrect confirmation', false);
-    }else if(form.value.newPassword === form.value.newPasswordConfirm) {
+      this.userService.updateUser(this.currentUser).subscribe(() => {
+        form.reset();
+        this.alertService.success('Password changed', false);
+      });
+    }else if(!(this.currentUser.password === form.value.oldPassword)) {
       form.reset();
       this.alertService.error('Incorrect password', false);
+    }else if(!(form.value.newPassword === form.value.newPasswordConfirm)) {
+      form.reset();
+      this.alertService.error('Incorrect confirmation', false);
     }
   }
 }

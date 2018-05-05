@@ -1,0 +1,37 @@
+<form (ngSubmit)="addRoute(routeForm)" #routeForm="ngForm">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="train">Train</label>
+      <select name="train" class="form-control" [ngModel] required>
+        <option selected>UTU666</option>
+        <option>KYS420</option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="departureCity">Departure City</label>
+      <input type="text" class="form-control" name="departureCity" [ngModel] required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="arrivalCity">Arrival City</label>
+      <input type="text" class="form-control" name="arrivalCity" [ngModel] required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="departureTime">Departure Time</label>
+      <input type="datetime-local" class="form-control" name="departureTime" [ngModel] required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="arrivalTime">Arrival Time</label>
+      <input type="datetime-local" class="form-control" name="arrivalTime" [ngModel] required>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="wayStations">Way Station Cities</label>
+      <input type="text" class="form-control" name="wayStations" [ngModel]>
+      <small id="passwordHelpBlock" class="form-text text-muted">
+        Write the name of each way station city each separated only by a single space.
+      </small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!routeForm.valid">Add Route</button>
+</form>

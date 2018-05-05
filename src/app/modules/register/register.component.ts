@@ -36,7 +36,8 @@ export class RegisterComponent implements OnInit {
     }
     const user = new User(
       form.value.firstName, form.value.lastName, form.value.username,
-      form.value.password, false, null, null);
+      form.value.password, false, null, null
+    );
     this.userService.addUser(user)
       .subscribe(user => {
         this.alertService.success('Registration successful', true);

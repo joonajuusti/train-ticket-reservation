@@ -22,6 +22,13 @@ export class UserInformationComponent {
   saveInformation(form: NgForm) {
     if(!this.haveValuesChanged(form)){
       this.alertService.error('You didn\'t submit any new values!', false);
+    }else {
+      this.currentUser.creditCard = form.value.creditCard;
+      this.currentUser.address = form.value.address;
+      this.userService.updateUser(this.currentUser).subscribe(() => {
+        form.reset();
+        this.alertService.success('Information changed', false);
+      });
     }
   }
 

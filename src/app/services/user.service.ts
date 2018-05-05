@@ -17,7 +17,17 @@ export class UserService {
   private usersUrl = 'http://localhost:8080/users';
 
   users: User[] = [];
-  currentUser: User;
+  //currentUser always admin, only for testing purposes
+  currentUser: User =
+    {
+      firstName: 'admin',
+      lastName: 'admin',
+      username: 'admin',
+      password: 'admin',
+      admin: true,
+      creditCard: '1234',
+      address: 'Admin Street 1'
+    };
 
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersUrl, user, httpOptions).pipe(
@@ -28,9 +38,9 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl).pipe(
-        tap(users => console.log('fetched users')),
-        catchError(this.handleError('getUsers', []))
-      );
+      tap(users => console.log('fetched users')),
+      catchError(this.handleError('getUsers', []))
+    );
   }
 
   updateUser(user: User): Observable<any> {
@@ -40,12 +50,13 @@ export class UserService {
     );
   }
 
+  //uncomment following functions after done testing
   setCurrentUser(user: User) {
-    this.currentUser = user;
+    //this.currentUser = user;
   }
 
   logoutCurrentUser() {
-    this.currentUser = null;
+    //this.currentUser = null;
   }
 
   getCurrentUser() {
