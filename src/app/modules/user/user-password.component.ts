@@ -8,7 +8,7 @@ import { AlertService } from '../../services/alert.service';
 @Component({
   templateUrl: './user-password.component.html'
 })
-export class UserPasswordComponent {
+export class UserPasswordComponent implements OnInit {
   constructor(
     private userService: UserService,
     private alertService: AlertService

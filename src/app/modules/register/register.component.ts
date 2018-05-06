@@ -23,8 +23,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getUsers(): void {
-    this.userService.getUsers()
-      .subscribe(users => this.users = users);
+    this.userService.getUsers().subscribe(users => this.users = users);
   }
 
   register(form: NgForm): void {

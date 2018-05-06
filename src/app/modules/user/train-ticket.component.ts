@@ -13,7 +13,7 @@ import { Route } from '../../models/route';
     </li>
   </ul>`
 })
-export class TrainTicketComponent {
+export class TrainTicketComponent implements OnInit {
   constructor(
     private userService: UserService,
     private routeService: RouteService

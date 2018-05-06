@@ -1,0 +1,29 @@
+<form (ngSubmit)="addLocomotive(locomotiveForm)" #locomotiveForm="ngForm">
+  <div class="form-group">
+    <label for="locomotiveId">Locomotive Id</label>
+    <input
+      type="text"
+      class="form-control"
+      name="id"
+      [ngModel]
+      required
+      pattern="^[A-Z]{3}[0-9]{3}$"
+      #id="ngModel" />
+  </div>
+  <div *ngIf="id.invalid && id.dirty"
+        class="alert alert-danger">
+      Locomotive Id must have exactly 3 capital letters and three numbers.
+  </div>
+  <div class="form-group">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!locomotiveForm.valid">Add Locomotive</button>
+  </div>
+</form>
+<h1>Current Locomotives:</h1>
+<ul>
+  <li *ngFor="let locomotive of locomotives">
+    {{ locomotive.id }}
+  </li>
+</ul>

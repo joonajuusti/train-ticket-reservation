@@ -6,7 +6,7 @@ import { User } from '../../models/user';
 @Component({
   templateUrl: './user.component.html'
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
   constructor(private userService: UserService) {}
 
   currentUser: User;

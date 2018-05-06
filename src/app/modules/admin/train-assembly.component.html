@@ -1,0 +1,27 @@
+<form (ngSubmit)="addTrain(trainForm)" #trainForm="ngForm">
+  <div class="form-group">
+    <label for="locomotive">Locomotive</label>
+    <select
+      class="form-control"
+      required
+      [ngModel]
+      name="locomotive">
+      <option value="" disabled>Choose Locomotive</option>
+      <option
+        *ngFor="let locomotive of locomotives"
+        [ngValue]="locomotive.id">{{ locomotive.id }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!trainForm.valid">Add Train</button>
+  </div>
+</form>
+<h1>Current Locomotives:</h1>
+<ul>
+  <li *ngFor="let train of trains">
+    {{ train.locomotive }}
+  </li>
+</ul>
