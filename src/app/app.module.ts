@@ -25,6 +25,7 @@ import { RouteService } from './services/route.service';
 import { TrainService } from './services/train.service';
 
 import { AppRoutingModule } from './app-routing.module';
+import { SearchComponent } from './modules/user/search.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { AppRoutingModule } from './app-routing.module';
     TrainComponent,
     TrainAssemblyComponent,
     LocomotiveComponent,
-    RailroadCarComponent
+    RailroadCarComponent,
+    SearchComponent
   ],
   providers: [
     UserService,
