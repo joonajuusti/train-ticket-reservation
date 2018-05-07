@@ -1,4 +1,5 @@
 <form (ngSubmit)="addRoute(routeForm)" #routeForm="ngForm">
+
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="train">Train</label>
@@ -16,14 +17,14 @@
       <input type="text" class="form-control" name="arrivalCity" [ngModel] required>
     </div>
   </div>
+
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="departureTime">Departure Time</label>
-      <input type="datetime-local" class="form-control" name="departureTime" [ngModel] required>
+      <label for="departureTime">Departure Time</label><input type="datetime-local" id="deptTime" class="form-control" [ngModel] required>
     </div>
     <div class="form-group col-md-4">
       <label for="arrivalTime">Arrival Time</label>
-      <input type="datetime-local" class="form-control" name="arrivalTime" [ngModel] required>
+      <input type="datetime-local" class="form-control" name="arrivalTime" id="arriTime" [ngModel] required>
     </div>
     <div class="form-group col-md-4">
       <label for="wayStations">Way Station Cities</label>
