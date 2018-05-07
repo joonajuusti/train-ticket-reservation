@@ -16,17 +16,8 @@ export class RouteComponent {
   ) {}
 
   ngOnInit() { 
-    //Show current time on route departure and arrival
-    //TO-DO 
-    var v: string;
-    var d = new Date()
-    var month;
-    month = d.getMonth();
-    var day = d.getDate();
-    v=d.getFullYear() +"-0"+ d.getMonth() +"-0"+ d.getDate() +"T"+ d.getHours() +":"+ d.getMinutes();
-    (<HTMLInputElement>document.getElementById("deptTime")).value = v;
-    (<HTMLInputElement>document.getElementById("arriTime")).value = v;
-  }
+    this.setTime();
+    }
 
   addRoute(form: NgForm) {
     const wayStations = this.checkWayStations(form.value.wayStations);
@@ -47,12 +38,29 @@ export class RouteComponent {
     if(wayStationsString !== null) return wayStationsString.split(' ');
     else return null;
   }
-
-  currentDate() {
-    var value: string;
+  setTime(){
+    //Show current time on route departure and arrival
+    var v: string;
     var d = new Date()
-    value=d.getFullYear +"-"+ d.getMonth +"-"+ d.getDate +"T"+ d.getHours +":"+ d.getMinutes;
-    alert(value);
-    alert(document.getElementById("deptTime").innerHTML) 
+
+    let month : any;
+    month = d.getMonth();
+    if (month<10){
+      month = "0" + (<string><any>month);
+    }
+
+    let date : any;
+    date = d.getDate();
+    if (date<10){
+      date = "0" + (<string><any>date);
+    }
+
+    var day = d.getDate();
+    v=d.getFullYear() +"-"+month +"-"+ date +"T"+ d.getHours() +":"+ d.getMinutes();
+    (<HTMLInputElement>document.getElementById("deptTime")).value = v;
+    (<HTMLInputElement>document.getElementById("deptTime")).min = v;
+    (<HTMLInputElement>document.getElementById("arriTime")).value = v;
+    (<HTMLInputElement>document.getElementById("arriTime")).min = v;
+
   }
 }
