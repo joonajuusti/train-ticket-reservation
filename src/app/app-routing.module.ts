@@ -38,6 +38,7 @@ const routes: Routes = [
           { path: 'trains',
             component: TrainComponent,
             children: [
+              { path: '', redirectTo: 'assembly', pathMatch: 'full' },
               { path: 'assembly', component: TrainAssemblyComponent },
               { path: 'locomotives', component: LocomotiveComponent },
               { path: 'railroadcars', component: RailroadCarComponent }

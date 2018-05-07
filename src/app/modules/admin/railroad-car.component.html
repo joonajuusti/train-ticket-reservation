@@ -1,0 +1,35 @@
+<form (ngSubmit)="addRailroadCar(railroadCarForm)" #railroadCarForm="ngForm">
+  <div class="form-group">
+    <label for="railroadCarModel">Railroad Car Model</label>
+    <input type="text" class="form-control" [ngModel] name="railroadCarModel" required>
+  </div>
+  <div class="form-group">
+    <label for="numberOfRows">Number of Rows</label>
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="length"
+      (input)="newLines()"
+      min="1"
+      max="30"
+      [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!railroadCarForm.valid">Add Railroad Car</button>
+  </div>
+</form>
+<div *ngFor="let number of arrayOfLengthOfThree">
+  <input *ngFor="let number of arrayOfLengthOfRowAmount" type="checkbox" disabled>
+</div>
+<div *ngIf="arrayOfLengthOfRowAmount.length > 0">
+  AISLE
+</div>
+<div *ngFor="let number of arrayOfLengthOfThree">
+  <input *ngFor="let number of arrayOfLengthOfRowAmount" type="checkbox" disabled>
+</div>
+<div *ngIf="length > 30 || length < 1" class="alert alert-danger">
+  Railroad car's row amount must be between 1 and 30.
+</div>

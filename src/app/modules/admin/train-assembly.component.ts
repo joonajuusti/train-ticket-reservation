@@ -6,6 +6,7 @@ import { AlertService } from '../../services/alert.service';
 
 import { Locomotive } from '../../models/locomotive';
 import { Train } from '../../models/train';
+import { RailroadCar } from '../../models/railroad-car';
 
 @Component({
   templateUrl: './train-assembly.component.html'
@@ -17,11 +18,13 @@ export class TrainAssemblyComponent implements OnInit {
   ) {}
 
   locomotives: Locomotive[];
+  railroadCars: RailroadCar[];
   trains: Train[];
 
   ngOnInit() {
     this.getLocomotives();
     this.getTrains();
+    this.getRailroadCars();
   }
 
   getLocomotives() {
@@ -36,11 +39,23 @@ export class TrainAssemblyComponent implements OnInit {
     });
   }
 
+  getRailroadCars() {
+    this.trainService.getRailroadCars().subscribe(railroadCars => {
+      this.railroadCars = railroadCars;
+    });
+  }
+
   addTrain(form: NgForm) {
-    const train = new Train(form.value.locomotive);
+    const train = new Train(
+      form.value.trainName,
+      form.value.locomotive,
+      form.value.railroadCar,
+      form.value.railroadCarAmount
+    );
     this.trainService.addTrain(train).subscribe(train => {
         this.alertService.success('Train added', false);
         this.getTrains();
+        console.log(train.railroadCar.numberOfRows)
       });
     form.resetForm();
   }

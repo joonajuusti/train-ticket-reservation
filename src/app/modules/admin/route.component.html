@@ -2,9 +2,15 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="train">Train</label>
-      <select name="train" class="form-control" [ngModel] required>
-        <option selected>UTU666</option>
-        <option>KYS420</option>
+      <select
+        class="form-control"
+        required
+        [ngModel]
+        name="train">
+      <option value="" disabled>Choose Train</option>
+      <option
+        *ngFor="let train of trains"
+        [ngValue]="train">{{ train.name }}</option>
       </select>
     </div>
     <div class="form-group col-md-4">

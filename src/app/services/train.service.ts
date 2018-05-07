@@ -7,7 +7,7 @@ import { of } from 'rxjs/observable/of';
 import { Route } from '../models/route';
 import { Locomotive } from '../models/locomotive';
 import { Train } from '../models/train';
-
+import { RailroadCar } from '../models/railroad-car';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -46,6 +46,20 @@ export class TrainService {
     return this.http.post(this.trainsUrl, train, httpOptions).pipe(
       tap((train: Train) => console.log('added train')),
       catchError(this.handleError<Train>('addTrain'))
+    );
+  }
+
+  getRailroadCars(): Observable<RailroadCar[]> {
+    return this.http.get<RailroadCar[]>(this.railroadCarsUrl).pipe(
+      tap(railroadCar => console.log('fetched railroad cars')),
+      catchError(this.handleError('getRailroadCars', []))
+    );
+  }
+
+  addRailroadCar(railroadCar: RailroadCar): Observable<RailroadCar> {
+    return this.http.post(this.railroadCarsUrl, railroadCar, httpOptions).pipe(
+      tap((railroadCar: RailroadCar) => console.log('added railroadCar')),
+      catchError(this.handleError<RailroadCar>('addRailroadCar'))
     );
   }
 

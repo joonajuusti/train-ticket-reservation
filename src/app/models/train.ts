@@ -1,5 +1,10 @@
+import { RailroadCar } from './railroad-car';
+
 export class Train {
   constructor(
-    public locomotive: string
+    public name: string,
+    public locomotive: string,
+    public railroadCar: RailroadCar,
+    public railroadCarAmount: number
   ) {}
 }
