@@ -18,6 +18,8 @@ import { TrainComponent } from './modules/admin/train.component';
 import { LocomotiveComponent } from './modules/admin/locomotive.component';
 import { RailroadCarComponent } from './modules/admin/railroad-car.component';
 import { TrainAssemblyComponent } from './modules/admin/train-assembly.component';
+import { RouteCardComponent } from './modules/user/route-card.component';
+import { SeatPickerComponent } from './modules/user/seat-picker.component';
 
 import { UserService } from './services/user.service';
 import { AlertService } from './services/alert.service';
@@ -49,7 +51,9 @@ import { AppRoutingModule } from './app-routing.module';
     TrainComponent,
     TrainAssemblyComponent,
     LocomotiveComponent,
-    RailroadCarComponent
+    RailroadCarComponent,
+    RouteCardComponent,
+    SeatPickerComponent
   ],
   providers: [
     UserService,

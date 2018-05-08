@@ -17,6 +17,8 @@ export class RouteService {
   private routesUrl = 'http://localhost:8080/routes';
 
   routes: Route[];
+  currentRoute: Route;
+
 
   addRoute(route: Route): Observable<Route> {
     return this.http.post(this.routesUrl, route, httpOptions).pipe(
@@ -29,6 +31,21 @@ export class RouteService {
     return this.http.get<Route[]>(this.routesUrl).pipe(
       tap(users => console.log('fetched routes')),
       catchError(this.handleError('getRoutes', []))
+    );
+  }
+
+  setCurrentRoute(route: Route) {
+    this.currentRoute = route;
+  }
+
+  getCurrentRoute() {
+    return this.currentRoute;
+  }
+
+  reserveSeats(route: Route): Observable<Route> {
+    return this.http.put(this.routesUrl, route, httpOptions).pipe(
+      tap(_ => console.log(`reserved seats on route ${route.id}`)),
+      catchError(this.handleError<any>('reserveSeats'))
     );
   }
 

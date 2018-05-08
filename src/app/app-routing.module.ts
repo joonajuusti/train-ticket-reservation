@@ -14,6 +14,7 @@ import { TrainComponent } from './modules/admin/train.component';
 import { LocomotiveComponent } from './modules/admin/locomotive.component';
 import { RailroadCarComponent } from './modules/admin/railroad-car.component';
 import { TrainAssemblyComponent } from './modules/admin/train-assembly.component';
+import { SeatPickerComponent } from './modules/user/seat-picker.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -24,6 +25,7 @@ const routes: Routes = [
     children: [
       //{ path: '', redirectTo: 'account', pathMatch: 'full' },
       { path: 'tickets', component: TrainTicketComponent },
+      { path: 'seats', component: SeatPickerComponent },
       { path: 'account',
         component: UserAccountComponent,
         children: [

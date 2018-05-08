@@ -35,8 +35,7 @@
     type="button"
     (click)="clear(routeForm)">Clear Form</button>
 </form>
-<ul>
-  <li *ngFor="let route of searchResultRoutes">
-    {{ route.train.locomotive }}, From: {{ route.departureCity }} at {{ route.departureTime }}, To: {{ route.arrivalCity }} at {{ route.arrivalTime }}
-  </li>
-</ul>
+<br>
+<div class="card-group">
+  <route-card *ngFor="let route of searchResultRoutes" [route]="route" class="col-md-4"></route-card>
+</div>

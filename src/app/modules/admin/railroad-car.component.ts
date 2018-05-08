@@ -7,8 +7,7 @@ import { TrainService } from '../../services/train.service';
 import { AlertService } from '../../services/alert.service';
 
 @Component({
-  templateUrl: 'railroad-car.component.html',
-  styles: ['div { nargin: 0px; padding: 1px; }']
+  templateUrl: 'railroad-car.component.html'
 })
 export class RailroadCarComponent{
   constructor(

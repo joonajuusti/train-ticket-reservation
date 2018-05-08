@@ -1,0 +1,28 @@
+<button
+  class="btn btn-danger"
+  type="button"
+  (click)="previousCar()">Previous Railroad Car</button>
+Railroad car {{ currentRailroadCar + 1 }}
+<button
+  class="btn btn-danger"
+  type="button"
+  (click)="nextCar()">Next Railroad Car</button>
+<div *ngFor="let number of arrayOfLengthOfThree; let i = index">
+  <input
+    *ngFor="let index of arrayOfNumberOfRows; let j = index"
+    [disabled]="currentRoute.seatsTaken[currentRailroadCar].includes(j * 6 + i)"
+    type="checkbox"
+    [(ngModel)]="currentRailroadCarSeatsTaken[j * 6 + i]">
+</div>
+  AISLE
+<div *ngFor="let number of arrayOfLengthOfThree; let i = index">
+  <input
+    *ngFor="let index of arrayOfNumberOfRows; let j = index"
+    [disabled]="currentRoute.seatsTaken[currentRailroadCar].includes(j * 6 + i + 3)"
+    type="checkbox"
+    [(ngModel)]="currentRailroadCarSeatsTaken[j * 6 + i + 3]">
+</div>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="proceed()">Proceed</button>
