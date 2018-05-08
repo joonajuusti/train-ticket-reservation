@@ -1,5 +1,8 @@
 <nav>
+  
+    <a routerLink="search">Search</a>
   <a routerLink="tickets">Tickets</a>
+  
   <a
     *ngIf="!(currentUser === undefined) && currentUser.admin"
     routerLink="admin">Admin</a>
