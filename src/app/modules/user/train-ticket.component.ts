@@ -86,7 +86,8 @@ export class TrainTicketComponent implements OnInit {
     var d = new Date()
 
     let month : any;
-    month = d.getMonth();
+    //Ebin +1 fix
+    month = d.getMonth()+1;
     if (month<10){
       month = "0" + (<string><any>month);
     }
