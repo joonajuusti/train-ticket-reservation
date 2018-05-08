@@ -23,6 +23,7 @@ export class RouteComponent implements OnInit{
 
   ngOnInit() {
     this.getTrains();
+    this.setTime();
   }
 
   getTrains() {
@@ -53,5 +54,29 @@ export class RouteComponent implements OnInit{
     if(wayStationsString !== null) return wayStationsString.split(' ');
     else return null;
   }
+  setTime(){
+    //Show current time on route departure and arrival
+    var v: string;
+    var d = new Date()
 
+    let month : any;
+    month = d.getMonth();
+    if (month<10){
+      month = "0" + (<string><any>month);
+    }
+
+    let date : any;
+    date = d.getDate();
+    if (date<10){
+      date = "0" + (<string><any>date);
+    }
+
+    var day = d.getDate();
+    v=d.getFullYear() +"-"+month +"-"+ date +"T"+ d.getHours() +":"+ d.getMinutes();
+    (<HTMLInputElement>document.getElementById("deptTime")).value = v;
+    (<HTMLInputElement>document.getElementById("deptTime")).min = v;
+    (<HTMLInputElement>document.getElementById("arriTime")).value = v;
+    (<HTMLInputElement>document.getElementById("arriTime")).min = v;
+
+  }
 }
