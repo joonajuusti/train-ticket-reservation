@@ -7,29 +7,41 @@
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="departureCity">Departure City</label>
-      <input type="text" class="form-control" name="departureCity" [ngModel] required>
+      <input type="text" class="form-control" id="departureCity" [ngModel] required>
     </div>
     <div class="form-group col-md-2">
       <label for="arrivalCity">Arrival City</label>
       <input type="text" class="form-control" name="arrivalCity" [ngModel] required>
     </div>
-    <div class="form-group col-md-3">
+    <div *ngIf="options" class="form-group col-md-3">
       <label for="departureTime">Departure Time</label>
-      <input type="datetime-local" class="form-control" name="departureTime" [ngModel] #departureTime="ngModel">
+      <input type="datetime-local" class="form-control" id="deptTime"[ngModel] #departureTime="ngModel">
     </div>
-    <div class="form-group col-md-3">
+    <div *ngIf="!options" class="form-group col-md-3">
       <label for="arrivalTime">Arrival Time</label>
-      <input type="datetime-local" class="form-control" name="arrivalTime" [ngModel] #arrivalTime="ngModel">
+      <input type="datetime-local" class="form-control"  id="arriTime" [ngModel] #arrivalTime="ngModel">
     </div>
     <div class="form-group col-md-2">
       <label for="tickets">Tickets</label>
       <input type="number" class="form-control" name="tickets" [ngModel] required>
     </div>
   </div>
+  <!-- 
+    Aseta parempaan paikkaan.
+  -->
+  <div class="form-row">
+    <input name="selectTime" [(ngModel)]="options" type="radio" [value]="true" [checked]="options"/>
+    <label for="departureTime">Departure Time</label>
+    <input name="selectTime" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options"/>
+    <label for="arrivalTime">Arrival Time</label>
+  </div>
+
+
   <button
     type="submit"
     class="btn btn-primary"
-    [disabled]="!routeForm.valid || (departureTime.pristine === arrivalTime.pristine)">Find Routes</button>
+    
+    (click)="findRoutes()">Find Routes</button>
   <button
     class="btn btn-danger"
     type="button"
