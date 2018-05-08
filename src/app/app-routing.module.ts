@@ -14,7 +14,6 @@ import { TrainComponent } from './modules/admin/train.component';
 import { LocomotiveComponent } from './modules/admin/locomotive.component';
 import { RailroadCarComponent } from './modules/admin/railroad-car.component';
 import { TrainAssemblyComponent } from './modules/admin/train-assembly.component';
-import { SearchComponent } from './modules/user/search.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -24,7 +23,6 @@ const routes: Routes = [
     component: UserComponent,
     children: [
       //{ path: '', redirectTo: 'account', pathMatch: 'full' },
-      { path: 'search', component: SearchComponent },
       { path: 'tickets', component: TrainTicketComponent },
       { path: 'account',
         component: UserAccountComponent,

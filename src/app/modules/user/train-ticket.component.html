@@ -13,27 +13,19 @@
       <label for="arrivalCity">Arrival City</label>
       <input type="text" class="form-control" name="arrivalCity" [ngModel] required>
     </div>
-    <div *ngIf="options" class="form-group col-md-3">
-      <label for="departureTime">Departure Time</label>
-      <input type="datetime-local" class="form-control" id="deptTime"[ngModel] #departureTime="ngModel">
-    </div>
-    <div *ngIf="!options" class="form-group col-md-3">
-      <label for="arrivalTime">Arrival Time</label>
-      <input type="datetime-local" class="form-control"  id="arriTime" [ngModel] #arrivalTime="ngModel">
+    <div class="form-group col-md-3">
+      <div class="form-row">
+          <input name="selectTime" checked="checked" type="radio" value="Departure"/>
+          <label for="departureTime">Departure Time</label>
+          <input name="selectTime" type="radio" value="Arrival"/>
+          <label for="arrivalTime">Arrival Time</label>
+        </div>
+      <input type="datetime-local" class="form-control" id="dTime"[ngModel] #departureTime="ngModel">
     </div>
     <div class="form-group col-md-2">
       <label for="tickets">Tickets</label>
       <input type="number" class="form-control" name="tickets" [ngModel] required>
     </div>
-  </div>
-  <!-- 
-    Aseta parempaan paikkaan.
-  -->
-  <div class="form-row">
-    <input name="selectTime" [(ngModel)]="options" type="radio" [value]="true" [checked]="options"/>
-    <label for="departureTime">Departure Time</label>
-    <input name="selectTime" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options"/>
-    <label for="arrivalTime">Arrival Time</label>
   </div>
 
 

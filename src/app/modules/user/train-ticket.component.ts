@@ -97,12 +97,20 @@ export class TrainTicketComponent implements OnInit {
       date = "0" + (<string><any>date);
     }
 
-    var day = d.getDate();
-    v=d.getFullYear() +"-"+month +"-"+ date +"T"+ d.getHours() +":"+ d.getMinutes();
-    (<HTMLInputElement>document.getElementById("deptTime")).value = v;
-    (<HTMLInputElement>document.getElementById("deptTime")).min = v;
-    (<HTMLInputElement>document.getElementById("arriTime")).value = v;
-    (<HTMLInputElement>document.getElementById("arriTime")).min = v;
+    let hours : any;
+    hours = d.getHours();
+    if (hours<10){
+      hours = "0" + (<string><any>hours);
+    }
+
+    let minutes : any;
+    minutes = d.getMinutes();
+    if (minutes<10){
+      minutes = "0" + (<string><any>minutes);
+    }
+    v=d.getFullYear() +"-"+month +"-"+ date +"T"+ hours +":"+ minutes;
+    (<HTMLInputElement>document.getElementById("dTime")).value = v;
+    (<HTMLInputElement>document.getElementById("dTime")).min = v;
 
   }
 }
