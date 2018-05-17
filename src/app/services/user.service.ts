@@ -18,7 +18,16 @@ export class UserService {
 
   users: User[] = [];
 
-  currentUser: User;
+  currentUser: User =
+    {
+      firstName: 'admin',
+      lastName: 'admin',
+      username: 'admin',
+      password: 'admin',
+      admin: true,
+      creditCard: '1234',
+      address: 'Admin Street 1'
+    };
 
   addUser(user: User): Observable<User> {
     return this.http.post<User>(this.usersUrl, user, httpOptions).pipe(
@@ -40,11 +49,11 @@ export class UserService {
 
 
   setCurrentUser(user: User) {
-    this.currentUser = user;
+    //this.currentUser = user;
   }
 
   logoutCurrentUser() {
-    this.currentUser = null;
+    //this.currentUser = null;
   }
 
   getCurrentUser() {

@@ -7,6 +7,7 @@ export class Purchase {
     public user: User,
     public railroadCarNumber: number,
     public seats: number[],
+    public price: number,
     public paid: boolean
   ) {}
 }

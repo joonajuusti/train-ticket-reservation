@@ -42,6 +42,7 @@ export class RouteComponent implements OnInit{
       form.value.arrivalCity,
       form.value.departureTime,
       form.value.arrivalTime,
+      form.value.pricePerSeat,
       wayStations
     );
     this.routeService.addRoute(route)

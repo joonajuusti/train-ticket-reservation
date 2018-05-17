@@ -28,6 +28,7 @@ export class TicketPurchaseComponent implements OnInit {
   purchasedSeatsString: string;
   railroadCarNumber: number;
   paid: boolean = true;
+  totalPrice: number;
 
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
@@ -38,6 +39,7 @@ export class TicketPurchaseComponent implements OnInit {
       return acc + (currentSeat + 1).toString() + ', ';
     }, '');
     this.purchasedSeatsString = this.purchasedSeatsString.substring(0, this.purchasedSeatsString.length - 2);
+    this.totalPrice = this.purchasedSeats.length * this.currentRoute.pricePerSeat;
   }
 
   purchaseTickets(paid: boolean) {
@@ -46,6 +48,7 @@ export class TicketPurchaseComponent implements OnInit {
       this.currentUser,
       this.railroadCarNumber,
       this.purchasedSeats,
+      this.totalPrice,
       paid
     );
     this.purchaseService.addPurchase(purchase).subscribe(purchase => {
@@ -64,6 +67,6 @@ export class TicketPurchaseComponent implements OnInit {
     this.routeService.reserveSeats(this.currentRoute).subscribe(() => {
       this.router.navigateByUrl('user/tickets');
     });
-    this.alertService.error('Canceled purchase', true);
+    this.alertService.error('Purchase canceled', true);
   }
 }

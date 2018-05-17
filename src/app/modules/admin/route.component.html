@@ -23,15 +23,19 @@
     </div>
   </div>
   <div class="form-row">
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
       <label for="departureTime">Departure Time</label>
       <input type="datetime-local" class="form-control" name="departureTime" [ngModel] required>
     </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
       <label for="arrivalTime">Arrival Time</label>
       <input type="datetime-local" class="form-control" name="arrivalTime" [ngModel] required>
     </div>
-    <div class="form-group col-md-4">
+    <div class="form-group col-md-3">
+      <label for="pricePerSeat">Price per seat</label>
+      <input type="number" class="form-control" name="pricePerSeat" [ngModel] required>
+    </div>
+    <div class="form-group col-md-3">
       <label for="wayStations">Way Station Cities</label>
       <input type="text" class="form-control" name="wayStations" [ngModel]>
       <small id="passwordHelpBlock" class="form-text text-muted">

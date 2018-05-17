@@ -10,7 +10,8 @@ export class Route {
     public arrivalCity: string,
     public departureTime: Date,
     public arrivalTime: Date,
-    public wayStations?: string[]
+    public pricePerSeat: number,
+    public wayStations?: string[],
   ) {
     this.availableSeats = this.train.railroadCarAmount * this.train.railroadCar.numberOfRows * 6;
     this.seatsTaken = new Array(this.train.railroadCarAmount);
