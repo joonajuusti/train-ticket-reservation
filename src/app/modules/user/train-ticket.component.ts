@@ -23,6 +23,7 @@ export class TrainTicketComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
     this.getRoutes();
+    this.routeService.resetPurchasedSeats();
   }
 
   getRoutes() {
@@ -30,6 +31,7 @@ export class TrainTicketComponent implements OnInit {
       this.routes = routes;
       //ONLY FOR TESTING
       this.searchResultRoutes = routes;
+      console.log(this.searchResultRoutes);
     });
   }
 

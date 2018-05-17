@@ -4,7 +4,8 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 
 @Component({
-  templateUrl: 'admin.component.html'
+  templateUrl: 'admin.component.html',
+  styleUrls: ['admin.component.css']
 })
 export class AdminComponent implements OnInit {
   constructor(private userService: UserService) {}

@@ -18,7 +18,8 @@ export class RouteService {
 
   routes: Route[];
   currentRoute: Route;
-
+  purchasedSeats: number[] = [];
+  railroadCarNumber: number;
 
   addRoute(route: Route): Observable<Route> {
     return this.http.post(this.routesUrl, route, httpOptions).pipe(
@@ -29,7 +30,6 @@ export class RouteService {
 
   getRoutes() {
     return this.http.get<Route[]>(this.routesUrl).pipe(
-      tap(users => console.log('fetched routes')),
       catchError(this.handleError('getRoutes', []))
     );
   }
@@ -44,20 +44,34 @@ export class RouteService {
 
   reserveSeats(route: Route): Observable<Route> {
     return this.http.put(this.routesUrl, route, httpOptions).pipe(
-      tap(_ => console.log(`reserved seats on route ${route.id}`)),
       catchError(this.handleError<any>('reserveSeats'))
     );
   }
 
+  addPurchasedSeat(seatNumber: number) {
+    this.purchasedSeats.push(seatNumber);
+  }
+
+  getPurchasedSeats() {
+    return this.purchasedSeats;
+  }
+
+  resetPurchasedSeats() {
+    this.purchasedSeats = [];
+  }
+
+  setRailroadCarNumber(railroadCarNumber: number) {
+    this.railroadCarNumber = railroadCarNumber;
+  }
+
+  getRailroadCarNumber() {
+    return this.railroadCarNumber;
+  }
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
+      console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }

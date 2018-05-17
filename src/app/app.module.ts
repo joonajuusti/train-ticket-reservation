@@ -20,11 +20,18 @@ import { RailroadCarComponent } from './modules/admin/railroad-car.component';
 import { TrainAssemblyComponent } from './modules/admin/train-assembly.component';
 import { RouteCardComponent } from './modules/user/route-card.component';
 import { SeatPickerComponent } from './modules/user/seat-picker.component';
+import { TicketPurchaseComponent } from './modules/user/ticket-purchase.component';
+import { PurchaseSearchComponent } from './modules/admin/purchase-search.component';
+import { PurchaseManageComponent } from './modules/admin/purchase-manage.component';
+import { PurchaseCardComponent } from './modules/admin/purchase-card.component';
+import { UserPurchaseCardComponent } from './modules/user/user-purchase-card.component';
+import { UserPurchasesListComponent } from './modules/user/user-purchases-list.component';
 
 import { UserService } from './services/user.service';
 import { AlertService } from './services/alert.service';
 import { RouteService } from './services/route.service';
 import { TrainService } from './services/train.service';
+import { PurchaseService } from './services/purchase.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -53,13 +60,20 @@ import { AppRoutingModule } from './app-routing.module';
     LocomotiveComponent,
     RailroadCarComponent,
     RouteCardComponent,
-    SeatPickerComponent
+    SeatPickerComponent,
+    TicketPurchaseComponent,
+    PurchaseSearchComponent,
+    PurchaseManageComponent,
+    PurchaseCardComponent,
+    UserPurchaseCardComponent,
+    UserPurchasesListComponent
   ],
   providers: [
     UserService,
     AlertService,
     RouteService,
-    TrainService
+    TrainService,
+    PurchaseService
    ],
   bootstrap: [ AppComponent ]
 })

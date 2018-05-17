@@ -4,6 +4,6 @@
     *ngIf="!(currentUser === undefined) && currentUser.admin"
     routerLink="admin">Admin</a>
   <a routerLink="account">Account</a>
-  <a routerLink="/login" (click)="logout()">Logout</a>
+  <a routerLink="/login" (click)="logout()" style="float:right">Logout</a>
 </nav>
 <router-outlet></router-outlet>

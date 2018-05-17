@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
     <a routerLink="locomotives">Locomotives</a>
     <a routerLink="railroadcars">Railroad Cars</a>
   </nav>
-  <router-outlet></router-outlet>`
+  <router-outlet></router-outlet>`,
+  styleUrls: ['train.component.css']
 })
 export class TrainComponent {
 

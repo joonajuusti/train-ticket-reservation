@@ -37,11 +37,10 @@ export class RegisterComponent implements OnInit {
       form.value.firstName, form.value.lastName, form.value.username,
       form.value.password, false, null, null
     );
-    this.userService.addUser(user)
-      .subscribe(user => {
-        this.alertService.success('Registration successful', true);
-        this.router.navigateByUrl('/login');
-      });
+    this.userService.addUser(user).subscribe(user => {
+      this.alertService.success('Registration successful', true);
+      this.router.navigateByUrl('/login');
+    });
     form.resetForm();
   }
 }

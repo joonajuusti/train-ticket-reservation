@@ -6,7 +6,8 @@ import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
 
 @Component({
-  templateUrl: './user-information.component.html'
+  templateUrl: './user-information.component.html',
+
 })
 export class UserInformationComponent implements OnInit {
   constructor(

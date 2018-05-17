@@ -23,7 +23,6 @@ export class TrainService {
 
   getLocomotives(): Observable<Locomotive[]> {
     return this.http.get<Locomotive[]>(this.locomotivesUrl).pipe(
-      tap(locomotives => console.log('fetched locomotives')),
       catchError(this.handleError('getLocomotives', []))
     );
   }
@@ -37,7 +36,6 @@ export class TrainService {
 
   getTrains(): Observable<Train[]> {
     return this.http.get<Train[]>(this.trainsUrl).pipe(
-      tap(trains => console.log('fetched trains')),
       catchError(this.handleError('getTrains', []))
     );
   }
@@ -51,7 +49,6 @@ export class TrainService {
 
   getRailroadCars(): Observable<RailroadCar[]> {
     return this.http.get<RailroadCar[]>(this.railroadCarsUrl).pipe(
-      tap(railroadCar => console.log('fetched railroad cars')),
       catchError(this.handleError('getRailroadCars', []))
     );
   }
@@ -65,13 +62,8 @@ export class TrainService {
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
+      console.error(error);
       console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }

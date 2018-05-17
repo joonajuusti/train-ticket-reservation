@@ -1,8 +1,3 @@
-<ul>
-  <li *ngFor="let route of routes">
-    {{ route.train.locomotive }}, From: {{ route.departureCity }} at {{ route.departureTime }}, To: {{ route.arrivalCity }} at {{ route.arrivalTime }}, {{ route.availableSeats }}
-  </li>
-</ul>
 <form (ngSubmit)="findRoutes(routeForm)" #routeForm="ngForm">
   <div class="form-row">
     <div class="form-group col-md-2">

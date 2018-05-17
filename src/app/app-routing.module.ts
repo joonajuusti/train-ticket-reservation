@@ -15,6 +15,10 @@ import { LocomotiveComponent } from './modules/admin/locomotive.component';
 import { RailroadCarComponent } from './modules/admin/railroad-car.component';
 import { TrainAssemblyComponent } from './modules/admin/train-assembly.component';
 import { SeatPickerComponent } from './modules/user/seat-picker.component';
+import { TicketPurchaseComponent } from './modules/user/ticket-purchase.component';
+import { PurchaseSearchComponent } from './modules/admin/purchase-search.component';
+import { PurchaseManageComponent } from './modules/admin/purchase-manage.component';
+import { UserPurchasesListComponent } from './modules/user/user-purchases-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -23,12 +27,15 @@ const routes: Routes = [
   { path: 'user',
     component: UserComponent,
     children: [
-      //{ path: '', redirectTo: 'account', pathMatch: 'full' },
+      { path: '', redirectTo: 'account', pathMatch: 'full' },
       { path: 'tickets', component: TrainTicketComponent },
       { path: 'seats', component: SeatPickerComponent },
+      { path: 'purchase', component: TicketPurchaseComponent },
       { path: 'account',
         component: UserAccountComponent,
         children: [
+          { path: '', redirectTo: 'purchases', pathMatch: 'full'},
+          { path: 'purchases', component: UserPurchasesListComponent },
           { path: 'information', component: UserInformationComponent },
           { path: 'password', component: UserPasswordComponent }
         ]
@@ -36,7 +43,10 @@ const routes: Routes = [
       { path: 'admin',
         component: AdminComponent,
         children: [
+          { path: '', redirectTo: 'routes', pathMatch: 'full'},
           { path: 'routes', component: RouteComponent },
+          { path: 'purchases', component: PurchaseSearchComponent },
+          { path: 'purchase-manage', component: PurchaseManageComponent },
           { path: 'trains',
             component: TrainComponent,
             children: [

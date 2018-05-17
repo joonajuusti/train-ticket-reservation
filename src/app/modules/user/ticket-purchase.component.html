@@ -1,0 +1,4 @@
+<h6>You have reserved seats {{ purchasedSeatsString }} on railroad car {{ railroadCarNumber + 1 }}.</h6>
+<button type="button" class="btn btn-primary" (click)="purchaseTickets(true)">Pay now</button>
+<button type="button" class="btn btn-primary" (click)="purchaseTickets(false)">Pay on the train</button>
+<button type="button" class="btn btn-danger" (click)="cancelPurchase()">Cancel purchase</button>
