@@ -10,8 +10,11 @@
           class="badge badge-warning ml-auto px-4">Available seats: {{ route.availableSeats }}</span>
   </div>
   <div class="card-body d-flex align-items-center">
-    <p class="card-text">DEPARTURE: {{ departureTimeString }}, ARRIVAL: {{ arrivalTimeString }}</p>
-    <p class="card-text">PRICE PER SEAT: {{ route.pricePerSeat }}€</p>
+    <p class="card-text">DEPARTURE: {{ departureTimeString }}, ARRIVAL: {{ arrivalTimeString }}, PRICE PER SEAT: {{ route.pricePerSeat }}€</p>
+
     <button type="button" class="btn btn-primary ml-auto" (click)="proceedToPurchase()">Purchase tickets</button>
+  </div>
+  <div *ngIf="route.wayStations !== null" class="card-body d-flex align-items-center">
+    <p class="card-text">Waystations: {{ wayStationsString }}</p>
   </div>
 </div>

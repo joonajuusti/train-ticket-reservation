@@ -1,3 +1,6 @@
+<div class="">
+  <h5>Fill only departure time or arrival time.</h5>
+</div>
 <form (ngSubmit)="findRoutes(routeForm)" #routeForm="ngForm">
   <div class="form-row">
     <div class="form-group col-md-2">
@@ -31,6 +34,9 @@
     (click)="clear(routeForm)">Clear Form</button>
 </form>
 <br>
+<div *ngIf="noSearchResultRoutes">
+  <h5>No search results with your search parameters.</h5>
+</div>
 <div class="card-group">
   <route-card *ngFor="let route of searchResultRoutes" [route]="route" class="col-md-4"></route-card>
 </div>

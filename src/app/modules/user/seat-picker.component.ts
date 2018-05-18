@@ -7,7 +7,23 @@ import { Route } from '../../models/route';
 import { RailroadCar } from '../../models/railroad-car';
 
 @Component({
-  templateUrl: './seat-picker.component.html'
+  templateUrl: './seat-picker.component.html',
+  styles:[`
+    .car{
+      display: inline-block;
+      margin: 10px 10px 10px 10px;
+    }
+    .car-text{
+      display: flex;
+      justify-content:center;
+      align-content:center;
+      flex-direction:column;
+      margin: 0 5px 0 5px;
+    }
+    .car-select{
+      margin: 0 10px 0 10px;
+    }
+  `]
 })
 export class SeatPickerComponent implements OnInit {
   constructor(

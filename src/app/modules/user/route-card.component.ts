@@ -28,12 +28,14 @@ export class RouteCardComponent implements OnInit {
   departureTimeString: string;
   travelDateString: string;
   currentUser: User;
+  wayStationsString: string;
 
   ngOnInit(){
     this.currentUser = this.userService.getCurrentUser();
     this.departureTimeString = new Date(this.route.departureTime).toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'});
     this.arrivalTimeString = new Date(this.route.arrivalTime).toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'});
     this.travelDateString = new Date(this.route.departureTime).toLocaleDateString('en-GB', dateOptions);
+    if(this.route.wayStations !== null) this.wayStationsString = this.route.wayStations.join(', ');
   }
 
   proceedToPurchase() {

@@ -19,6 +19,7 @@ export class TrainTicketComponent implements OnInit {
   routes: Route[];
   searchResultRoutes: Route[];
   finalRoutes: Route[];
+  noSearchResultRoutes: boolean = false;
 
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
@@ -29,20 +30,18 @@ export class TrainTicketComponent implements OnInit {
   getRoutes() {
     this.routeService.getRoutes().subscribe(routes => {
       this.routes = routes;
-      //ONLY FOR TESTING
-      this.searchResultRoutes = routes;
-      console.log(this.searchResultRoutes);
     });
   }
 
-  /*findRoutes(form: NgForm) {
+  findRoutes(form: NgForm) {
     this.findRoutesBetweenTwoCities(form.value.departureCity, form.value.arrivalCity);
     if(this.searchByDepartureTime(form.value.departureTime)){
       this.filterByDepartureTime(form.value.departureTime);
     }else {
       this.filterByArrivalTime(form.value.arrivalTime);
     }this.removeRoutesWithInsufficientSeating(form.value.tickets);
-    this.filterIntoColumns(this.searchResultRoutes);
+    (this.searchResultRoutes.length === 0) ? this.noSearchResultRoutes = true : this.noSearchResultRoutes = false;
+    console.log(this.noSearchResultRoutes);
   }
 
   findRoutesBetweenTwoCities(departureCity: string, arrivalCity: string) {
@@ -82,6 +81,5 @@ export class TrainTicketComponent implements OnInit {
   clear(form: NgForm) {
     form.reset();
     this.searchResultRoutes = [];
-  }*/
-
+  }
 }
