@@ -41,7 +41,6 @@ export class TrainTicketComponent implements OnInit {
       this.filterByArrivalTime(form.value.arrivalTime);
     }this.removeRoutesWithInsufficientSeating(form.value.tickets);
     (this.searchResultRoutes.length === 0) ? this.noSearchResultRoutes = true : this.noSearchResultRoutes = false;
-    console.log(this.noSearchResultRoutes);
   }
 
   findRoutesBetweenTwoCities(departureCity: string, arrivalCity: string) {
