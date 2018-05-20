@@ -21,11 +21,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.getUsers();
   }
-
+  /**Fetches users from server */
   getUsers(): void {
     this.userService.getUsers().subscribe(users => this.users = users);
   }
-
+  /**
+   * Registers a new user to serverside
+   * 
+   * @param form Contains registering username and password
+   */
   register(form: NgForm): void {
     for(let user of this.users) {
       if(user.username === form.value.username) {

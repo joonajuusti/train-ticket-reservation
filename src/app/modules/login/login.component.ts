@@ -22,11 +22,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.getUsers();
   }
-
+  /**Fetches users from server */
   getUsers(): void {
     this.userService.getUsers().subscribe(users => this.users = users);
   }
-
+  /**
+   * Logs in if username and password matches existing users
+   * 
+   * @param form with username and password
+   */
   login(form: NgForm) {
     for(let user of this.users) {
       if(user.username === form.value.username) {
@@ -37,7 +41,11 @@ export class LoginComponent implements OnInit {
       }else if(this.users.indexOf(user) === this.users.length - 1) this.alertService.error('Username not found', false);
     }
   }
-
+  /**
+   * Sets the logged in user
+   * 
+   * @param user The user that is logged in
+   */
   setCurrentUser(user: User) {
     this.userService.setCurrentUser(user);
     this.router.navigateByUrl('/user');

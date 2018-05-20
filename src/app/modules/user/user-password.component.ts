@@ -19,7 +19,11 @@ export class UserPasswordComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
   }
-
+  /**
+   * Changes users password if they have given correct current password and valid new password values.
+   * 
+   * @param form NgForm containing values of the password change -screen
+   */
   changePassword(form: NgForm){
     if(this.currentUser.password === form.value.oldPassword && form.value.newPassword === form.value.newPasswordConfirm){
       this.currentUser.password = form.value.newPassword;

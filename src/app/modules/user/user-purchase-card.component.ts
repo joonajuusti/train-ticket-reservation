@@ -28,7 +28,7 @@ export class UserPurchaseCardComponent implements OnInit {
     this.dateString = new Date(this.purchase.route.departureTime).toLocaleDateString('en-GB', dateOptions);
     this.seatsString = this.purchase.seats.map(seat => seat + 1).join(', ');
   }
-
+  /**Deletes current purchase */
   deletePurchase() {
     this.purchaseService.deletePurchase(this.purchase).subscribe(() => {
       this.alertService.success('Purchase deleted', true);

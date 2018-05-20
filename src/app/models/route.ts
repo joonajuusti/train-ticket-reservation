@@ -1,5 +1,5 @@
 import { Train } from './train';
-
+/**Defines Routes */
 export class Route {
   public availableSeats;
   public seatsTaken;

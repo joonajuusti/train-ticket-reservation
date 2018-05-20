@@ -41,7 +41,12 @@ export class TicketPurchaseComponent implements OnInit {
     this.purchasedSeatsString = this.purchasedSeatsString.substring(0, this.purchasedSeatsString.length - 2);
     this.totalPrice = this.purchasedSeats.length * this.currentRoute.pricePerSeat;
   }
-
+  /**
+   * Adds the purchased tickets for a Route to current User.
+   * Navigates to show users current tickets.
+   * 
+   * @param paid Boolean for if the tickets are already paid for. (Implemented for paying on train)
+   */
   purchaseTickets(paid: boolean) {
     const purchase = new Purchase(
       this.currentRoute,
@@ -57,7 +62,9 @@ export class TicketPurchaseComponent implements OnInit {
     });
     this.routeService.resetPurchasedSeats();
   }
-
+  /**
+   * TODO
+   */
   cancelPurchase() {
     this.currentRoute.availableSeats = this.currentRoute.availableSeats + this.purchasedSeats.length;
     for(let seatNumber of this.purchasedSeats) {

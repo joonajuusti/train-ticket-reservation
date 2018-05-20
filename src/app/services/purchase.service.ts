@@ -17,14 +17,23 @@ export class PurchaseService {
   private purchasesUrl = 'http://localhost:8080/purchases';
 
   currentPurchase: Purchase;
-
+  /**
+   * Adds a purchase to server
+   * 
+   * @param purchase Purchase to be added to the server
+   * @returns Observable of the Purchase
+   */
   addPurchase(purchase: Purchase): Observable<Purchase> {
     return this.http.post(this.purchasesUrl, purchase, httpOptions).pipe(
       tap((purchase: Purchase) => console.log('added purchase')),
       catchError(this.handleError<Purchase>('addPurchase'))
     );
   }
-
+  /**
+   * Fetches purchases from server and returns them.
+   * 
+   * @returns Array of Purchases
+   */
   getPurchases() {
     return this.http.get<Purchase[]>(this.purchasesUrl).pipe(
       catchError(this.handleError('getPurchases', []))

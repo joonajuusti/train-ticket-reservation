@@ -37,7 +37,11 @@ export class RouteCardComponent implements OnInit {
     this.travelDateString = new Date(this.route.departureTime).toLocaleDateString('en-GB', dateOptions);
     if(this.route.wayStations !== null) this.wayStationsString = this.route.wayStations.join(', ');
   }
-
+  /**
+   * TODO
+   * 
+   * @returns if the logged in user doesn't have a credit card
+   */
   proceedToPurchase() {
     if(this.currentUser.creditCard === null) {
       this.alertService.error('You have to add a valid credit card to your account before purchasing tickets', false);

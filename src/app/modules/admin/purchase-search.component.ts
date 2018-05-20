@@ -33,7 +33,11 @@ export class PurchaseSearchComponent implements OnInit {
       this.usernames = this.findUsersWhoHavePurchases(this.purchases);
     });
   }
-
+  /**
+   * Finds purchaces
+   * 
+   * @param form TODO
+   */
   findPurchases(form: NgForm) {
     if(form.value.username !== null) {
       this.filterByUsers(form.value.username);

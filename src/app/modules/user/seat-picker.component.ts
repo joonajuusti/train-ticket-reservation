@@ -44,19 +44,22 @@ export class SeatPickerComponent implements OnInit {
     this.railroadCarAmount = this.currentRoute.train.railroadCarAmount;
     this.currentRailroadCar = 0;
   }
-
+  /**Sets currentRailroadCar to the previous one */
   previousCar() {
     if(this.currentRailroadCar > 0) {
       this.currentRailroadCar--;
     }
   }
-
+  /**Sets currentRailroadCar to the next one */
   nextCar() {
     if(this.currentRailroadCar < this.railroadCarAmount - 1) {
       this.currentRailroadCar++;
     }
   }
-
+  /**
+   * Updates seats taken for this Route.
+   * Proceeds to the purchase of the selected seat.
+   */
   proceed() {
     this.updateSeatsTaken(this.currentRoute, this.currentRailroadCarSeatsTaken, this.currentRailroadCar);
     this.updateAvailableSeats(this.currentRoute);
@@ -66,7 +69,13 @@ export class SeatPickerComponent implements OnInit {
     this.routeService.setRailroadCarNumber(this.currentRailroadCar);
     this.router.navigateByUrl('user/purchase');
   }
-
+  /**
+   * TODO
+   * 
+   * @param currentRoute 
+   * @param currentRailroadCarSeatsTaken 
+   * @param currentRailroadCar 
+   */
   updateSeatsTaken(currentRoute: Route, currentRailroadCarSeatsTaken: boolean[], currentRailroadCar: number) {
     for(let i = 0; i < currentRailroadCarSeatsTaken.length; i++) {
       if(currentRailroadCarSeatsTaken[i] === true) {
@@ -77,7 +86,11 @@ export class SeatPickerComponent implements OnInit {
       }
     }
   }
-
+  /**
+   * Updates the available seats for the Route given as a parametre.
+   * 
+   * @param currentRoute The Route the reservation is happening on
+   */
   updateAvailableSeats(currentRoute: Route) {
     currentRoute.availableSeats = currentRoute.train.railroadCarAmount * this.arrayOfNumberOfRows.length * 6 -
     currentRoute.seatsTaken.map(array => array.length).reduce((acc, value) => acc + value);

@@ -17,7 +17,9 @@ export class RailroadCarComponent{
   arrayOfLengthOfRowAmount: number[] = [0];
   arrayOfLengthOfThree: number[] = [0, 0, 0];
   length: number = 1;
-
+  /**
+   * TODO
+   */
   newLines() {
     let index: number;
     this.arrayOfLengthOfRowAmount = [];
@@ -28,7 +30,11 @@ export class RailroadCarComponent{
     }
     console.log(this.arrayOfLengthOfRowAmount);
   }
-
+  /**
+   * Creates a new RailroadCar and adds it to the list of all RailroadCars
+   * 
+   * @param form A form containing the information to create a new RailroadCar
+   */
   addRailroadCar(form: NgForm) {
     console.log('addRailroadCar');
     const railroadCar = new RailroadCar(form.value.railroadCarModel, this.length);

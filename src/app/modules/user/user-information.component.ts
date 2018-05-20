@@ -19,7 +19,11 @@ export class UserInformationComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.userService.getCurrentUser();
   }
-
+  /**
+   * Saves user information if they have been changed.
+   * 
+   * @param form NgForm containing the values of user information page
+   */
   saveInformation(form: NgForm) {
     if(!this.haveValuesChanged(form)){
       this.alertService.error('You didn\'t submit any new values!', false);
@@ -32,7 +36,12 @@ export class UserInformationComponent implements OnInit {
       });
     }
   }
-
+/**
+ * Checks if the user information form values have been changed. 
+ * 
+ * @param form NgForm containing the values of user information page
+ * @returns true if values have been changed, false if not 
+ */
   haveValuesChanged(form : NgForm) {
     if(this.currentUser.creditCard === form.value.creditCard
     && this.currentUser.address === form.value.address) {

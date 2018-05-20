@@ -20,28 +20,46 @@ export class RouteService {
   currentRoute: Route;
   purchasedSeats: number[] = [];
   railroadCarNumber: number;
-
+  /**
+   * Adds a route and returns a Observable of them
+   * 
+   * @param route Route to be added
+   * @returns Observable of Routes
+   */
   addRoute(route: Route): Observable<Route> {
     return this.http.post(this.routesUrl, route, httpOptions).pipe(
       tap((route: Route) => console.log('added route')),
       catchError(this.handleError<Route>('addRoute'))
     );
   }
-
+  /**Fetches Routes from server */
   getRoutes() {
     return this.http.get<Route[]>(this.routesUrl).pipe(
       catchError(this.handleError('getRoutes', []))
     );
   }
-
+  /**
+   * Sets currentRoute to the one given as a parametre
+   * 
+   * @param route Current Route
+   */
   setCurrentRoute(route: Route) {
     this.currentRoute = route;
   }
-
+  /**
+   * Returns the current Route.
+   * 
+   * @returns current Route
+   */
   getCurrentRoute() {
     return this.currentRoute;
   }
-
+  /**
+   * Reserves seats for the Route given as a parametre
+   * 
+   * @param route Route to reserve seats on
+   * @returns Observable of Routes
+   */
   reserveSeats(route: Route): Observable<Route> {
     return this.http.put(this.routesUrl, route, httpOptions).pipe(
       catchError(this.handleError<any>('reserveSeats'))
