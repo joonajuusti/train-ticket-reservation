@@ -19,17 +19,21 @@ export class AlertService {
             }
         });
     }
-
+    /**Alert on success */
     success(message: string, keepAfterNavigationChange = false) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'success', text: message });
     }
-
+    /**Alert on error */
     error(message: string, keepAfterNavigationChange = false) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'error', text: message });
     }
-
+    /**
+     * Returns alert message
+     * 
+     * @returns Observable array containing alert message
+     */
     getMessage(): Observable<any> {
         return this.subject.asObservable();
     }

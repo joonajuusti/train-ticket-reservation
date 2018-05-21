@@ -65,27 +65,49 @@ export class RouteService {
       catchError(this.handleError<any>('reserveSeats'))
     );
   }
-
+  /**
+   * Adds a seat to purchases
+   * 
+   * @param seatNumber Number of the seat purchased
+   */
   addPurchasedSeat(seatNumber: number) {
     this.purchasedSeats.push(seatNumber);
   }
-
+  /**
+   * Returns purchased seats
+   * 
+   * @returns Purchased seats
+   */
   getPurchasedSeats() {
     return this.purchasedSeats;
   }
-
+  /**Resets class variable purchasedSeats */
   resetPurchasedSeats() {
     this.purchasedSeats = [];
   }
-
+  /**
+   * Sets class variable railroadCarNumber to the one given as parameter.
+   * 
+   * @param railroadCarNumber Number of the current railroadCar.
+   */
   setRailroadCarNumber(railroadCarNumber: number) {
     this.railroadCarNumber = railroadCarNumber;
   }
-
+  /**
+   * Returns class variable railroadCarNumber
+   * 
+   * @returns current railroadCarNumber
+   */
   getRailroadCarNumber() {
     return this.railroadCarNumber;
   }
-
+  /**
+   * Handles errors.
+   * 
+   * @param operation Operation name set
+   * @param result error to be handled
+   * @returns error
+   */
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
