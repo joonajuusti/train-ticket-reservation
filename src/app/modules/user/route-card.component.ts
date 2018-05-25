@@ -38,7 +38,7 @@ export class RouteCardComponent implements OnInit {
     if(this.route.wayStations !== null) this.wayStationsString = this.route.wayStations.join(', ');
   }
   /**
-   * TODO
+   * Checks if the user has a valid credit card
    * 
    * @returns if the logged in user doesn't have a credit card
    */

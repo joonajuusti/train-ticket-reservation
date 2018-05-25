@@ -63,7 +63,7 @@ export class TicketPurchaseComponent implements OnInit {
     this.routeService.resetPurchasedSeats();
   }
   /**
-   * TODO
+   * Cancels the current purchase
    */
   cancelPurchase() {
     this.currentRoute.availableSeats = this.currentRoute.availableSeats + this.purchasedSeats.length;

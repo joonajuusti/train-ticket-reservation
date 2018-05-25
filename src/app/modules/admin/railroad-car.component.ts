@@ -18,7 +18,7 @@ export class RailroadCarComponent{
   arrayOfLengthOfThree: number[] = [0, 0, 0];
   length: number = 1;
   /**
-   * TODO
+   * Makes new lines
    */
   newLines() {
     let index: number;

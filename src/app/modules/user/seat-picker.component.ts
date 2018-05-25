@@ -70,7 +70,7 @@ export class SeatPickerComponent implements OnInit {
     this.router.navigateByUrl('user/purchase');
   }
   /**
-   * TODO
+   * Takes care of updating seats
    * 
    * @param currentRoute 
    * @param currentRailroadCarSeatsTaken 

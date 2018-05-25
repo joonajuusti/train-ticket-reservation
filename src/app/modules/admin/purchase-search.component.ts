@@ -36,7 +36,7 @@ export class PurchaseSearchComponent implements OnInit {
   /**
    * Finds purchaces
    * 
-   * @param form TODO
+   * @param form NgForm
    */
   findPurchases(form: NgForm) {
     if(form.value.username !== null) {
