@@ -2,6 +2,8 @@
 
 This project is for a university course focusing on UIs.
 
-## Development server
+## Setting up
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Clone train-backend from `https://github.com/joonajuusti/train-backend.git`. In that directory, run `npm install` and then `npm start` to get the backend running.
+
+In the train-ticket-reservetion directory, run `npm install` and then `ng serve --open` for a server at `http://localhost:4200/`. 
